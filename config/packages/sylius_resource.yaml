@@ -10,6 +10,6 @@ sylius_resource:
 
     # Configure your resources
     resources:
-        #app.book:
-            #classes:
-                #model: App\Entity\Book
+        app.brand:
+            classes:
+                model: App\Entity\Brand\Brand
