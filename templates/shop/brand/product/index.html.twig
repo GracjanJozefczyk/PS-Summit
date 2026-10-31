@@ -1,0 +1,9 @@
+{% extends '@SyliusShop/shared/layout/base.html.twig' %}
+
+{% set brand = configuration.vars.brand %}
+
+{% block title %}{{ brand.name }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    {% hook 'index' with { _prefixes: ['app_shop.brand.product', 'sylius_shop.product'], brand, products, resources } %}
+{% endblock %}

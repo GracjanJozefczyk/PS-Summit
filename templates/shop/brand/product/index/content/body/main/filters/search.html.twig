@@ -1,0 +1,7 @@
+<div class="col">
+    <form method="get" action="{{ path('app_shop_brand_product_index', {'code': hookable_metadata.context.brand.code}) }}">
+        <div class="input-group">
+            {% hook 'search' %}
+        </div>
+    </form>
+</div>

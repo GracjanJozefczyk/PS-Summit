@@ -13,3 +13,4 @@ sylius_resource:
         app.brand:
             classes:
                 model: App\Entity\Brand\Brand
+                repository: App\Repository\BrandRepository

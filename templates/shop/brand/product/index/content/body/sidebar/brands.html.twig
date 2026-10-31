@@ -1,0 +1,11 @@
+{% set current_brand = hookable_metadata.context.brand %}
+
+<div {{ sylius_test_html_attribute('vertical-menu') }}>
+    <div class="d-flex flex-column">
+        {% for brand in brands %}
+            <a href="{{ path('app_shop_brand_product_index', {'code': brand.code}) }}" class="d-inline-block py-1 link-reset{{ brand.code == current_brand.code ? ' fw-bold' }}" {{ sylius_test_html_attribute('vertical-menu-item') }}>
+                {{ brand.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>

@@ -24,3 +24,16 @@ sylius_shop_request_password_reset_token_redirect:
     defaults:
         route: sylius_shop_request_password_reset_token
         permanent: false
+
+app_shop_brand_product_index:
+    path: /{_locale}/brands/{code}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product::indexAction
+        _sylius:
+            template: 'shop/brand/product/index.html.twig'
+            grid: app_shop_brand_product
+            vars:
+                brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByCode($code))"
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$

@@ -1,0 +1,9 @@
+{% set brands = hookable_metadata.context.brands %}
+
+<div class="dropdown-menu">
+    {% for brand in brands %}
+        <a class="nav-link" href="{{ path('app_shop_brand_product_index', {'code': brand.code}) }}" title="{{ brand.name|e('html_attr') }}" {{ sylius_test_html_attribute('menu-item', brand.name) }}>
+            {{ brand.name }}
+        </a>
+    {% endfor %}
+</div>
