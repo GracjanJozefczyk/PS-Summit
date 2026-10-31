@@ -150,6 +150,7 @@ sylius_product:
         product:
             classes:
                 model: App\Entity\Product\Product
+                repository: App\Repository\ProductRepository
             translation:
                 classes:
                     model: App\Entity\Product\ProductTranslation
@@ -304,3 +305,65 @@ sylius_twig_hooks:
             brand:
                 template: 'admin/product_variant/form/sections/general/body/brand.html.twig'
                 priority: 250
+
+        'sylius_shop.base.header.navbar.menu':
+            brands:
+                component: 'app_shop:brand:list'
+                props:
+                    template: 'shop/shared/layout/base/header/navbar/menu/brands.html.twig'
+                priority: 100
+
+        'sylius_shop.base.header.navbar.menu.brands':
+            toggle:
+                template: 'shop/shared/layout/base/header/navbar/menu/brands/toggle.html.twig'
+                priority: 100
+            dropdown:
+                template: 'shop/shared/layout/base/header/navbar/menu/brands/dropdown.html.twig'
+                priority: 0
+
+        'app_shop.brand.product.index.content':
+            breadcrumbs:
+                template: 'shop/brand/product/index/content/breadcrumbs.html.twig'
+                priority: 100
+
+        'app_shop.brand.product.index.content.body.sidebar':
+            taxonomy:
+                enabled: false
+            brands:
+                component: 'app_shop:brand:list'
+                props:
+                    template: 'shop/brand/product/index/content/body/sidebar/brands.html.twig'
+                priority: 0
+
+        'app_shop.brand.product.index.content.body.main':
+            header:
+                template: 'shop/brand/product/index/content/body/main/header.html.twig'
+                priority: 300
+
+        'app_shop.brand.product.index.content.body.main.header':
+            image:
+                enabled: false
+            name:
+                template: 'shop/brand/product/index/content/body/main/header/name.html.twig'
+                priority: 100
+            description:
+                enabled: false
+
+        'app_shop.brand.product.index.content.body.main.filters':
+            search:
+                template: 'shop/brand/product/index/content/body/main/filters/search.html.twig'
+                priority: 100
+
+        'app_shop.brand.product.index.content.body.main.filters.search':
+            clear:
+                template: 'shop/brand/product/index/content/body/main/filters/search/clear.html.twig'
+                priority: 0
+
+        'app_shop.brand.product.index.content.body.main.filters.controls':
+            sort:
+                template: 'shop/brand/product/index/content/body/main/filters/controls/sorting.html.twig'
+                priority: 0
+
+        'app_shop.brand.product.index.content.body.main.filters.controls.sorting.menu':
+            default:
+                enabled: false

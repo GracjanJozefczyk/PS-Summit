@@ -75,3 +75,37 @@ sylius_grid:
                         class: '%app.model.brand.class%'
                     options:
                         fields: [brand.id]
+
+        app_shop_brand_product:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.product.class%"
+                    repository:
+                        method: createShopListByBrandQueryBuilder
+                        arguments:
+                            channel: "expr:service('sylius.context.channel').getChannel()"
+                            brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByCode($code))"
+                            locale: "expr:service('sylius.context.locale').getLocaleCode()"
+                            sorting: "expr:service('request_stack').getCurrentRequest().query.all('sorting')"
+            sorting:
+                name: asc
+            limits: [9, 18, 27]
+            fields:
+                createdAt:
+                    type: datetime
+                    sortable: ~
+                name:
+                    type: string
+                    sortable: translation.name
+                price:
+                    type: int
+                    sortable: channelPricing.price
+            filters:
+                search:
+                    type: shop_string
+                    label: false
+                    options:
+                        fields: [translation.name]
+                    form_options:
+                        type: contains

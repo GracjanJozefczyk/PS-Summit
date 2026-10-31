@@ -46,3 +46,10 @@ services:
             - '%app.model.brand.class%'
         tags:
             - { name: form.type_extension }
+    
+    app.twig.component.shop.brand_list:
+        class: App\TwigComponent\Shop\BrandListComponent
+        arguments:
+            - '@app.repository.brand'
+        tags:
+            - { name: sylius.twig_component, key: 'app_shop:brand:list' }

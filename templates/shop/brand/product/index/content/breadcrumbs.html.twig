@@ -1,0 +1,9 @@
+{% from '@SyliusShop/shared/breadcrumbs.html.twig' import breadcrumbs as breadcrumbs %}
+
+{% set brand = hookable_metadata.context.brand %}
+
+{{ breadcrumbs([
+    { path: path('sylius_shop_homepage'), label: 'sylius.ui.home'|trans },
+    { label: 'app.ui.brands'|trans },
+    { label: brand.name, active: true },
+]) }}

@@ -1,0 +1,5 @@
+{% if brands is not empty %}
+    <div class="nav-item dropdown" {{ sylius_test_html_attribute('menu-item', 'brands') }}>
+        {% hook 'brands' with { brands } %}
+    </div>
+{% endif %}
