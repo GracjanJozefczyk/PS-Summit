@@ -8,3 +8,7 @@ app:
             main:
                 catalog:
                     brands: Brands
+    form:
+        product_variant:
+            brand: Brand
+            no_brand: 'No brand'

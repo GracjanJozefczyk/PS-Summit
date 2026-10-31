@@ -48,3 +48,30 @@ sylius_grid:
                 bulk:
                     delete:
                         type: delete
+
+        sylius_admin_product:
+            filters:
+                brand:
+                    type: entity
+                    label: app.ui.brand
+                    form_options:
+                        class: '%app.model.brand.class%'
+                    options:
+                        fields: [variants.brand.id]
+
+        sylius_admin_product_variant:
+            fields:
+                brand:
+                    type: twig
+                    label: app.ui.brand
+                    path: brand
+                    options:
+                        template: 'admin/product_variant/grid/field/brand.html.twig'
+            filters:
+                brand:
+                    type: entity
+                    label: app.ui.brand
+                    form_options:
+                        class: '%app.model.brand.class%'
+                    options:
+                        fields: [brand.id]
