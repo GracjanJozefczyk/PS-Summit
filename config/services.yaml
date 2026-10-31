@@ -40,3 +40,9 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+        
+    App\Form\Extension\ProductVariantTypeExtension:
+        arguments:
+            - '%app.model.brand.class%'
+        tags:
+            - { name: form.type_extension }
