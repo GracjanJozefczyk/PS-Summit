@@ -1,0 +1,10 @@
+app:
+    ui:
+        brand: Brand
+        brands: Brands
+        manage_brands: 'Manage product brands'
+    menu:
+        admin:
+            main:
+                catalog:
+                    brands: Brands

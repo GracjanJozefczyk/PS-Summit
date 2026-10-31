@@ -1,3 +1,20 @@
 sylius_admin:
     resource: "@SyliusAdminBundle/Resources/config/routing.yml"
     prefix: '/%sylius_admin.path_name%'
+
+app_admin_brand:
+    resource: |
+        alias: app.brand
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_brand
+        vars:
+            all:
+                subheader: app.ui.manage_brands
+            index:
+                icon: 'tabler:building-store'
+        permission: true
+    type: sylius.resource
+    prefix: '/%sylius_admin.path_name%'
