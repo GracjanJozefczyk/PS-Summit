@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%app.model.brand.class%">
+        <operations>
+            <operation name="sylius_api_admin_brand_get_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/admin/brands">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <filters>
+                    <filter>app.search_filter.admin.brand</filter>
+                    <filter>app.boolean_filter.admin.brand</filter>
+                    <filter>app.order_filter.admin.brand</filter>
+                    <filter>sylius_api.channel_search_filter.admin.channel_aware</filter>
+                </filters>
+                <order>
+                    <values>
+                        <value name="name">ASC</value>
+                    </values>
+                </order>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_get" class="ApiPlatform\Metadata\Get" uriTemplate="/admin/brands/{code}">
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_post" class="ApiPlatform\Metadata\Post" uriTemplate="/admin/brands">
+                <denormalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:create</value>
+                            </values>
+                        </value>
+                    </values>
+                </denormalizationContext>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_put" class="ApiPlatform\Metadata\Put" uriTemplate="/admin/brands/{code}">
+                <denormalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:update</value>
+                            </values>
+                        </value>
+                    </values>
+                </denormalizationContext>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_delete" class="ApiPlatform\Metadata\Delete" uriTemplate="/admin/brands/{code}" />
+        </operations>
+    </resource>
+</resources>

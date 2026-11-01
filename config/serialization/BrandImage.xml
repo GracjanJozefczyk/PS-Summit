@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<serializer
+    xmlns="http://symfony.com/schema/dic/serializer-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="App\Entity\Brand\BrandImage">
+        <attribute name="id">
+            <group>app:shop:brand_image:index</group>
+            <group>app:shop:brand_image:show</group>
+            <group>app:admin:brand_image:index</group>
+            <group>app:admin:brand_image:show</group>
+            <group>app:admin:brand:index</group>
+            <group>app:admin:brand:show</group>
+            <group>app:shop:brand:index</group>
+            <group>app:shop:brand:show</group>
+        </attribute>
+        <attribute name="path">
+            <group>app:shop:brand_image:index</group>
+            <group>app:shop:brand_image:show</group>
+            <group>app:admin:brand_image:index</group>
+            <group>app:admin:brand_image:show</group>
+            <group>app:admin:brand:index</group>
+            <group>app:admin:brand:show</group>
+            <group>app:shop:brand:index</group>
+            <group>app:shop:brand:show</group>
+        </attribute>
+        <attribute name="type">
+            <group>app:shop:brand_image:index</group>
+            <group>app:shop:brand_image:show</group>
+            <group>app:admin:brand_image:index</group>
+            <group>app:admin:brand_image:show</group>
+            <group>app:admin:brand_image:update</group>
+            <group>app:admin:brand:index</group>
+            <group>app:admin:brand:show</group>
+            <group>app:shop:brand:index</group>
+            <group>app:shop:brand:show</group>
+        </attribute>
+    </class>
+</serializer>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%sylius.model.product.class%">
+        <operations>
+            <operation name="sylius_api_shop_product_get_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/shop/products">
+                <filters>
+                    <filter>sylius_api.search_filter.shop.product</filter>
+                    <filter>sylius_api.order_filter.shop.product</filter>
+                    <filter>sylius_api.price_order_filter.shop.product</filter>
+                    <filter>sylius_api.name_with_locale_order_filter.shop.translatable</filter>
+                    <filter>sylius_api.taxon_search_filter.shop.product</filter>
+                    <filter>sylius_api.search_filter.shop.products_by_association</filter>
+                    <filter>app.search_filter.shop.product_brand</filter>
+                </filters>
+            </operation>
+        </operations>
+    </resource>
+</resources>

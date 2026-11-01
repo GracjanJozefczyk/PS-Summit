@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%app.model.brand_translation.class%">
+        <operations>
+            <operation
+                name="sylius_api_admin_brand_brand_translation_get"
+                class="ApiPlatform\Metadata\NotExposed"
+                uriTemplate="/admin/brands/{code}/translations/{localeCode}"
+            >
+                <uriVariables>
+                    <uriVariable parameterName="code" fromClass="%app.model.brand.class%" fromProperty="translations" />
+                    <uriVariable parameterName="localeCode" fromClass="%app.model.brand_translation.class%" />
+                </uriVariables>
+            </operation>
+        </operations>
+    </resource>
+</resources>
