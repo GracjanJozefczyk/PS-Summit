@@ -1,0 +1,52 @@
+services:
+    app.search_filter.admin.brand:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { code: partial, name: partial }
+        tags:
+            - { name: api_platform.filter }
+
+    app.boolean_filter.admin.brand:
+        parent: api_platform.doctrine.orm.boolean_filter
+        arguments:
+            - { enabled: ~ }
+        tags:
+            - { name: api_platform.filter }
+
+    app.order_filter.admin.brand:
+        parent: api_platform.doctrine.orm.order_filter
+        arguments:
+            - { code: ~, name: ~, createdAt: ~ }
+        tags:
+            - { name: api_platform.filter }
+
+    app.search_filter.shop.product_brand:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            - { variants.brand.code: exact }
+        tags:
+            - { name: api_platform.filter }
+
+    app.doctrine.orm.query_extension.shop.brand.channel_based:
+        class: App\Doctrine\ORM\QueryExtension\Shop\Brand\ChannelBasedExtension
+        arguments:
+            - '@sylius.section_resolver.uri_based'
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection }
+            - { name: api_platform.doctrine.orm.query_extension.item }
+
+    app.creator.brand_image:
+        class: App\Creator\BrandImageCreator
+        arguments:
+            - '@app.factory.brand_image'
+            - '@app.repository.brand'
+            - '@sylius.uploader.image'
+            - '@validator'
+
+    app.state_processor.admin.brand_image.persist:
+        class: Sylius\Bundle\ApiBundle\StateProcessor\Admin\TaxonImage\PersistProcessor
+        arguments:
+            - '@api_platform.doctrine.orm.state.persist_processor'
+            - '@app.creator.brand_image'
+        tags:
+            - { name: api_platform.state_processor }

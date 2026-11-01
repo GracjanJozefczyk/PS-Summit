@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources
+    xmlns="https://api-platform.com/schema/metadata/resources-3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata/resources-3.0 https://api-platform.com/schema/metadata/resources-3.0.xsd"
+>
+    <resource class="%app.model.brand_image.class%">
+        <operations>
+            <operation name="sylius_api_admin_brand_brand_image_get_collection" class="ApiPlatform\Metadata\GetCollection" uriTemplate="/admin/brands/{code}/images">
+                <uriVariables>
+                    <uriVariable parameterName="code" fromClass="%app.model.brand.class%" fromProperty="images"/>
+                </uriVariables>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand_image:index</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_brand_image_get" class="ApiPlatform\Metadata\Get" uriTemplate="/admin/brands/{code}/images/{id}">
+                <uriVariables>
+                    <uriVariable parameterName="code" fromClass="%app.model.brand.class%" fromProperty="images"/>
+                    <uriVariable parameterName="id" fromClass="%app.model.brand_image.class%"/>
+                </uriVariables>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand_image:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_brand_image_put" class="ApiPlatform\Metadata\Put" uriTemplate="/admin/brands/{code}/images/{id}">
+                <uriVariables>
+                    <uriVariable parameterName="code" fromClass="%app.model.brand.class%" fromProperty="images"/>
+                    <uriVariable parameterName="id" fromClass="%app.model.brand_image.class%"/>
+                </uriVariables>
+                <denormalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand_image:update</value>
+                            </values>
+                        </value>
+                    </values>
+                </denormalizationContext>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand_image:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+
+            <operation name="sylius_api_admin_brand_brand_image_delete" class="ApiPlatform\Metadata\Delete" uriTemplate="/admin/brands/{code}/images/{id}">
+                <uriVariables>
+                    <uriVariable parameterName="code" fromClass="%app.model.brand.class%" fromProperty="images"/>
+                    <uriVariable parameterName="id" fromClass="%app.model.brand_image.class%"/>
+                </uriVariables>
+            </operation>
+        </operations>
+    </resource>
+
+    <resource class="%app.model.brand.class%">
+        <operations>
+            <operation
+                name="sylius_api_admin_brand_brand_image_post"
+                class="ApiPlatform\Metadata\Post"
+                uriTemplate="/admin/brands/{code}/images"
+                processor="app.state_processor.admin.brand_image.persist"
+                deserialize="false"
+            >
+                <inputFormats>
+                    <format name="multipart">multipart/form-data</format>
+                </inputFormats>
+                <normalizationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>app:admin:brand_image:show</value>
+                            </values>
+                        </value>
+                    </values>
+                </normalizationContext>
+                <validationContext>
+                    <values>
+                        <value name="groups">
+                            <values>
+                                <value>sylius</value>
+                            </values>
+                        </value>
+                    </values>
+                </validationContext>
+            </operation>
+        </operations>
+    </resource>
+</resources>
