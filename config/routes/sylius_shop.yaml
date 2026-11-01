@@ -34,6 +34,6 @@ app_shop_brand_product_index:
             template: 'shop/brand/product/index.html.twig'
             grid: app_shop_brand_product
             vars:
-                brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByCode($code))"
+                brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByChannelAndCode(service('sylius.context.channel').getChannel(), $code))"
     requirements:
         _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$

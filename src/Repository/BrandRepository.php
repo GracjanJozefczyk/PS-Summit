@@ -5,33 +5,38 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Brand\BrandInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Channel\Model\ChannelInterface;
 
 final class BrandRepository extends EntityRepository implements BrandRepositoryInterface
 {
-    public function findEnabledOrderedByName(): array
+    public function findEnabledByChannel(ChannelInterface $channel): array
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.enabled = :enabled')
-            ->setParameter('enabled', true)
+        return $this->createEnabledInChannelQueryBuilder($channel)
             ->orderBy('o.name', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findOneEnabledByCode(string $code): ?BrandInterface
+    public function findOneEnabledByChannelAndCode(ChannelInterface $channel, string $code): ?BrandInterface
     {
-        /** @var ?BrandInterface $brand */
-        $brand = $this->createQueryBuilder('o')
+        return $this->createEnabledInChannelQueryBuilder($channel)
             ->andWhere('o.code = :code')
-            ->andWhere('o.enabled = :enabled')
             ->setParameter('code', $code)
-            ->setParameter('enabled', true)
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }
 
-        return $brand;
+    private function createEnabledInChannelQueryBuilder(ChannelInterface $channel): QueryBuilder
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.enabled = :enabled')
+            ->andWhere(':channel MEMBER OF o.channels')
+            ->setParameter('enabled', true)
+            ->setParameter('channel', $channel)
+            ;
     }
 }
