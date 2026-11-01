@@ -14,3 +14,10 @@ sylius_resource:
             classes:
                 model: App\Entity\Brand\Brand
                 repository: App\Repository\BrandRepository
+                form: App\Form\Type\Brand\BrandType
+            translation:
+                classes:
+                    model: App\Entity\Brand\BrandTranslation
+        app.brand_image:
+            classes:
+                model: App\Entity\Brand\BrandImage

@@ -1,0 +1,11 @@
+{% set brand = hookable_metadata.context.brand %}
+
+{% if brand.images.first %}
+    <div class="mb-5">
+        <img src="{{ asset(brand.images.first.path|imagine_filter('sylius_shop_taxon_thumbnail')) }}"
+             alt="{{ brand.name }}"
+             class="img-fluid"
+             {{ sylius_test_html_attribute('brand-image') }}
+        >
+    </div>
+{% endif %}

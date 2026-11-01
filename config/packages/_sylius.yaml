@@ -342,12 +342,14 @@ sylius_twig_hooks:
 
         'app_shop.brand.product.index.content.body.main.header':
             image:
-                enabled: false
+                template: 'shop/brand/product/index/content/body/main/header/image.html.twig'
+                priority: 300
             name:
                 template: 'shop/brand/product/index/content/body/main/header/name.html.twig'
                 priority: 100
             description:
-                enabled: false
+                template: 'shop/brand/product/index/content/body/main/header/description.html.twig'
+                priority: 0
 
         'app_shop.brand.product.index.content.body.main.filters':
             search:
@@ -367,3 +369,129 @@ sylius_twig_hooks:
         'app_shop.brand.product.index.content.body.main.filters.controls.sorting.menu':
             default:
                 enabled: false
+
+        'sylius_admin.brand.create.content':
+            form:
+                component: 'app_admin:brand:form'
+                props:
+                    resource: '@=_context.resource'
+                    form: '@=_context.form'
+                    template: '@SyliusAdmin/shared/crud/common/content/form.html.twig'
+                configuration:
+                    render_rest: false
+
+        'sylius_admin.brand.create.content.form':
+            general:
+                template: 'admin/brand/form/general.html.twig'
+                priority: 100
+            translations:
+                template: 'admin/brand/form/translations.html.twig'
+                priority: 0
+            images:
+                template: 'admin/brand/form/images.html.twig'
+                priority: -100
+            sections:
+                enabled: false
+
+        'sylius_admin.brand.create.content.form.general':
+            code:
+                template: 'admin/brand/form/general/code.html.twig'
+                priority: 100
+            name:
+                template: 'admin/brand/form/general/name.html.twig'
+                priority: 0
+            enabled:
+                template: 'admin/brand/form/general/enabled.html.twig'
+                priority: -100
+            channels:
+                template: 'admin/brand/form/general/channels.html.twig'
+                priority: -200
+
+        'sylius_admin.brand.create.content.form.translations':
+            description:
+                template: 'admin/brand/form/translations/description.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.update.content':
+            form:
+                component: 'app_admin:brand:form'
+                props:
+                    resource: '@=_context.resource'
+                    form: '@=_context.form'
+                    template: '@SyliusAdmin/shared/crud/common/content/form.html.twig'
+                configuration:
+                    render_rest: false
+
+        'sylius_admin.brand.update.content.form':
+            general:
+                template: 'admin/brand/form/general.html.twig'
+                priority: 100
+            translations:
+                template: 'admin/brand/form/translations.html.twig'
+                priority: 0
+            images:
+                template: 'admin/brand/form/images.html.twig'
+                priority: -100
+            sections:
+                enabled: false
+
+        'sylius_admin.brand.update.content.form.general':
+            code:
+                template: 'admin/brand/form/general/code.html.twig'
+                priority: 100
+            name:
+                template: 'admin/brand/form/general/name.html.twig'
+                priority: 0
+            enabled:
+                template: 'admin/brand/form/general/enabled.html.twig'
+                priority: -100
+            channels:
+                template: 'admin/brand/form/general/channels.html.twig'
+                priority: -200
+
+        'sylius_admin.brand.update.content.form.translations':
+            description:
+                template: 'admin/brand/form/translations/description.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.create.content.form.images':
+            image:
+                template: 'admin/brand/form/images/image.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.create.content.form.images.image#left':
+            picture:
+                template: 'admin/brand/form/images/image/picture.html.twig'
+                priority: 100
+            button_delete:
+                template: 'admin/brand/form/images/image/button_delete.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.create.content.form.images.image#right':
+            type:
+                template: 'admin/brand/form/images/image/type.html.twig'
+                priority: 100
+            file:
+                template: 'admin/brand/form/images/image/file.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.update.content.form.images':
+            image:
+                template: 'admin/brand/form/images/image.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.update.content.form.images.image#left':
+            picture:
+                template: 'admin/brand/form/images/image/picture.html.twig'
+                priority: 100
+            button_delete:
+                template: 'admin/brand/form/images/image/button_delete.html.twig'
+                priority: 0
+
+        'sylius_admin.brand.update.content.form.images.image#right':
+            type:
+                template: 'admin/brand/form/images/image/type.html.twig'
+                priority: 100
+            file:
+                template: 'admin/brand/form/images/image/file.html.twig'
+                priority: 0

@@ -53,3 +53,43 @@ services:
             - '@app.repository.brand'
         tags:
             - { name: sylius.twig_component, key: 'app_shop:brand:list' }
+
+    App\Form\Type\Brand\BrandType:
+        arguments:
+            - '%app.model.brand.class%'
+            - ['sylius']
+        tags:
+            - { name: form.type }
+
+    App\Form\Type\Brand\BrandTranslationType:
+        arguments:
+            - '%app.model.brand_translation.class%'
+            - ['sylius']
+        tags:
+            - { name: form.type }
+
+    App\Form\Type\Brand\BrandImageType:
+        arguments:
+            - '%app.model.brand_image.class%'
+            - ['sylius']
+        tags:
+            - { name: form.type }
+
+    app.twig.component.brand.form:
+        class: Sylius\Bundle\UiBundle\Twig\Component\ResourceFormComponent
+        autoconfigure: false
+        arguments:
+            - '@app.repository.brand'
+            - '@form.factory'
+            - '%app.model.brand.class%'
+            - App\Form\Type\Brand\BrandType
+        tags:
+            - { name: sylius.live_component.admin, key: 'app_admin:brand:form' }
+
+    app.listener.brand_images_upload:
+        class: Sylius\Bundle\CoreBundle\EventListener\ImagesUploadListener
+        arguments:
+            - '@sylius.uploader.image'
+        tags:
+            - { name: kernel.event_listener, event: app.brand.pre_create, method: uploadImages }
+            - { name: kernel.event_listener, event: app.brand.pre_update, method: uploadImages }

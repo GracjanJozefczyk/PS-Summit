@@ -8,6 +8,14 @@ sylius_grid:
             sorting:
                 name: asc
             fields:
+                image:
+                    type: twig
+                    label: sylius.ui.image
+                    path: .
+                    options:
+                        template: 'admin/brand/grid/field/image.html.twig'
+                        vars:
+                            th_class: 'w-1'
                 code:
                     type: twig
                     label: sylius.ui.code
@@ -85,7 +93,7 @@ sylius_grid:
                         method: createShopListByBrandQueryBuilder
                         arguments:
                             channel: "expr:service('sylius.context.channel').getChannel()"
-                            brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByCode($code))"
+                            brand: "expr:notFoundOnNull(service('app.repository.brand').findOneEnabledByChannelAndCode(service('sylius.context.channel').getChannel(), $code))"
                             locale: "expr:service('sylius.context.locale').getLocaleCode()"
                             sorting: "expr:service('request_stack').getCurrentRequest().query.all('sorting')"
             sorting:
